@@ -8,8 +8,8 @@ Django'yu kullanmaya başlamadan önce, kurmamız gerekiyor. We have a
 possibilities; this guide will guide you to a simple, minimal installation
 that'll work while you walk through the introduction.
 
-Install Python
---------------
+Python yükleyin
+----------------
 
 Being a Python Web framework, Django requires Python. It works with any Python
 version from 2.3 to 2.6 (due to backwards
