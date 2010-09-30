@@ -1,0 +1,22 @@
+#index p.rubric { font-size:150%; font-weight:normal; margin-bottom:.2em; color:#487858; }
+
+#index div.section dt { font-weight: normal; }
+
+#index #s-yardim-edinme { float: right; width: 35em; background: #E1ECE2; padding: 1em; margin: 2em 0 2em 2em; }
+#index #s-yardim-edinme h2 { margin: 0; }
+
+#index #s-django-belgelendirmesi div.section div.section h3 { margin: 0; }
+#index #s-django-belgelendirmesi div.section div.section { background: #E1ECE2; padding: 1em; margin: 2em 0 2em 40.3em; }
+#index #s-django-belgelendirmesi div.section div.section a.reference { white-space: nowrap; }
+
+#index #s-djangoyu-kullanmak dl,
+#index #s-eklenti-contrib-uygulamalar dl,
+#index #s-spesifik-problemleri-cozme dl,
+#index #s-referans dl
+    { float: left; width: 41em; }
+
+#index #s-eklenti-contrib-uygulamalar,
+#index #s-spesifik-problemleri-cozme,
+#index #s-referans,
+#index #s-ve-tum-geriye-kalan
+    { clear: left; }

@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bir bakışta Django &mdash; Django v1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Django v1.0 documentation" href="../index.html" />
+    <link rel="up" title="Başlarken" href="index.html" />
+    <link rel="next" title="Quick install guide" href="install.html" />
+    <link rel="prev" title="Başlarken" href="index.html" /> 
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t6">
+    <div id="hd">
+      <h1><a href="../index.html">Django v1.0 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>  |
+        <a title="Table of contents" href="../contents.html">Table of contents</a>  |
+        <a title="Global index" href="../genindex.html">Index</a>  |
+        <a title="Search" href="../modindex.html">Modules</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="index.html" title="Başlarken">previous</a> 
+     |
+    <a href="index.html" title="Başlarken" accesskey="U">up</a>
+   |
+    <a href="install.html" title="Quick install guide">next</a> &raquo;</div>
+    </div>
+    
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="intro-overview">
+            
+  <div class="section" id="s-bir-bakista-django">
+<span id="s-intro-overview"></span><span id="bir-bakista-django"></span><span id="intro-overview"></span><h1>Bir bakışta Django<a class="headerlink" href="#bir-bakista-django" title="Permalink to this headline">¶</a></h1>
+<p>Django hızlı tempolu bir haber merkezi ortamında geliştirildiğinden, temel web
+geliştirme görevlerini hızlı ve kolay bir şekilde yapmak için tasarlanmıştı.
+Bu kısımda Django ile veritabanı-idareli web uygulamaları yazmanın genel görünümü
+verilmiştir.</p>
+<p>Bu belgenin amacı size Django&#8217;nun nasıl çalıştığı hakkında yeterli teknik spesifikleri
+vermektir. Belge bir referans veya eğitsel olmak amacında değildir &#8211; fakat bunlara da
+sahibiz! Bir projeye yaratmaya hazır olduğunuz zaman <a class="reference external" href="tutorial01.html#intro-tutorial01"><em>eğitsele başlayın</em></a>
+ya da <a class="reference external" href="../topics/index.html#topics-index"><em>daha ayrıntılı belgelendirmeye dalın!</em></a>.</p>
+<div class="section" id="s-modelinizi-tasarlayin">
+<span id="modelinizi-tasarlayin"></span><h2>Modelinizi tasarlayın<a class="headerlink" href="#modelinizi-tasarlayin" title="Permalink to this headline">¶</a></h2>
+<p>Django&#8217;yu bir veritabanı olmadan da kullanabilmenize rağmen, Django, Python kodu yazarak
+veritabanınızın yerleşimini tanımlayacağınız bir nesne-ilişkisel eşleyici ile birlikte gelir.</p>
+<p>The <a class="reference external" href="../topics/db/models.html#topics-db-models"><em>veri-model söz dizimi</em></a> size modellerinizi tanımlamak için zengin yollar sunar.
+Şimdilik iki yıllık süre boyunca karşılaşılmış veritabanı-şema problemlerini çözüyor. İşte hızlı bir örnek:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Yazar</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">tam_adi</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tam_adi</span>
+
+<span class="k">class</span> <span class="nc">Makale</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">yayin_tarihi</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">baslik</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">icerik</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">yazar</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Yazar</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">baslik</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s-kurun">
+<span id="kurun"></span><h2>Kurun<a class="headerlink" href="#kurun" title="Permalink to this headline">¶</a></h2>
+<p>Şimdi, Django komut satırı özelliğini kullanarak veritabanı tablolarını otomatik olarak
+yaratın:</p>
+<div class="highlight-bash"><div class="highlight"><pre>manage.py syncdb
+</pre></div>
+</div>
+<p>The <tt class="xref docutils literal"><span class="pre">syncdb</span></tt> komutu tüm mevcut modellerinize bakarak veritabanınız için henüz yaratılmamış
+tabloları yaratır.</p>
+</div>
+<div class="section" id="s-ozgur-api-nin-tadini-cikartin">
+<span id="ozgur-api-nin-tadini-cikartin"></span><h2>Özgür API'nin tadını çıkartın<a class="headerlink" href="#ozgur-api-nin-tadini-cikartin" title="Permalink to this headline">¶</a></h2>
+<p>Verinize erişmek için zengin, özgür bir <a class="reference external" href="../topics/db/queries.html#topics-db-queries"><em>Python API'sine</em></a> sahipsiniz:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sitem.models</span> <span class="kn">import</span> <span class="n">Yazar</span><span class="p">,</span> <span class="n">Makale</span>
+
+<span class="go"># Henüz sistemde hiç yazar yok.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">[]</span>
+
+<span class="go"># Yeni bir yazar oluşturun.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Yazar</span><span class="p">(</span><span class="n">tam_adi</span><span class="o">=</span><span class="s">&#39;John Smith&#39;</span><span class="p">)</span>
+
+<span class="go"># Nesneyi veritabanına kaydedin. save() metodunu açıkça çağırmalısınız.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># artık makalenin bir ID&#39;si var.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">id</span>
+<span class="go">1</span>
+
+<span class="go"># Artık yeni yazarımız da veritabanımızda.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">[&lt;Yazar: John Smith&gt;]</span>
+
+<span class="go"># Sütunlar Python nesnelerinin özellikleri olarak temsil edilir.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">tam_adi</span>
+<span class="go">&#39;John Smith&#39;</span>
+
+<span class="go"># Django zengin bir veritabanı gözatma API&#39;si sunar.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Yazar: John Smith&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tam_adi__startswith</span><span class="o">=</span><span class="s">&#39;John&#39;</span><span class="p">)</span>
+<span class="go">&lt;Yazar: John Smith&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tam_adi__contains</span><span class="o">=</span><span class="s">&#39;mith&#39;</span><span class="p">)</span>
+<span class="go">&lt;Yazar: John Smith&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Yazar</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">DoesNotExist</span>: <span class="n-Identifier">Yazar matching query does not exist.</span>
+
+<span class="go"># Makale yaratın.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Makale</span><span class="p">(</span><span class="n">yayin_tarihi</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">baslik</span><span class="o">=</span><span class="s">&#39;Django çok havalı&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">icerik</span><span class="o">=</span><span class="s">&#39;EVET.&#39;</span><span class="p">,</span> <span class="n">yazar</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># Şimdi yeni makalemiz veritabanımızda.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Makale</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">[&lt;Makale: Django çok havalı&gt;]</span>
+
+<span class="go"># Makale nesneleri kendilerine bağlanan Yazar nesneleri için API erişimine sahiptir.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">yazar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">tam_adi</span>
+<span class="go">&#39;John Smith&#39;</span>
+
+<span class="go"># Tersi de doğrudur: Yazar nesneleri bağlı oldukları Makale nesneleri için API erişimine sahiptir.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">makale_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">[&lt;Makale: Django çok havalı&gt;]</span>
+
+<span class="go"># API veritabanı ilişkilerini ihtiyacınız olduğu kadar size sunar, arka planda</span>
+<span class="go"># verimli JOIN işlemlerini gerçekler.</span>
+<span class="go"># Şimdi adı &quot;John&quot; ile başlayan tüm yazarların tüm makalelerini bulalım</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Makale</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">yazar__tam_adi__startswith</span><span class="o">=</span><span class="s">&quot;John&quot;</span><span class="p">)</span>
+<span class="go">[&lt;Makale: Django çok havalı&gt;]</span>
+
+<span class="go"># Bir nesneyi özelliklerini başkalaştırarak ve save() metodunu çağırarak değiştirebilirsiniz.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">tam_adi</span> <span class="o">=</span> <span class="s">&#39;Billy Goat&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="go"># delete() ile nesneyi veritabanınızdan silin.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="s-dinamik-bir-yonetim-arayuzu-sadece-bir-temel-degil-tum-ev">
+<span id="dinamik-bir-yonetim-arayuzu-sadece-bir-temel-degil-tum-ev"></span><h2>Dinamik bir yönetim arayüzü: sadece bir temel değil -- tüm ev<a class="headerlink" href="#dinamik-bir-yonetim-arayuzu-sadece-bir-temel-degil-tum-ev" title="Permalink to this headline">¶</a></h2>
+<p>Modellerinizi tanımladıktan sonra, Django otomatik olarak profosyonel, kullanıma
+hazır bir <a class="reference external" href="../ref/contrib/admin.html#ref-contrib-admin"><em>yönetimsel arayüz</em></a> sunar -- a Web
+site that lets authenticated users add, change and delete objects. It's as easy
+as registering your model in the admin site::
+Once your models are defined, Django can automatically create a professional,
+production ready <a class="reference external" href="../ref/contrib/admin.html#ref-contrib-admin"><em>administrative interface</em></a> -- a Web
+site that lets authenticated users add, change and delete objects. It's as easy
+as registering your model in the admin site:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># In models.py...</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Article</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">pub_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">headline</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">reporter</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Reporter</span><span class="p">)</span>
+
+
+<span class="c"># In admin.py in the same directory...</span>
+
+<span class="kn">import</span> <span class="nn">models</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Article</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The philosophy here is that your site is edited by a staff, or a client, or
+maybe just you -- and you don't want to have to deal with creating backend
+interfaces just to manage content.</p>
+<p>One typical workflow in creating Django apps is to create models and get the
+admin sites up and running as fast as possible, so your staff (or clients) can
+start populating data. Then, develop the way data is presented to the public.</p>
+</div>
+<div class="section" id="s-design-your-urls">
+<span id="design-your-urls"></span><h2>Design your URLs<a class="headerlink" href="#design-your-urls" title="Permalink to this headline">¶</a></h2>
+<p>A clean, elegant URL scheme is an important detail in a high-quality Web
+application. Django encourages beautiful URL design and doesn't put any cruft
+in URLs, like <tt class="docutils literal"><span class="pre">.php</span></tt> or <tt class="docutils literal"><span class="pre">.asp</span></tt>.</p>
+<p>To design URLs for an app, you create a Python module called a <a class="reference external" href="../topics/http/urls.html#topics-http-urls"><em>URLconf</em></a>. A table of contents for your app, it contains a simple mapping
+between URL patterns and Python callback functions. URLconfs also serve to
+decouple URLs from Python code.</p>
+<p>Here's what a URLconf might look like for the <tt class="docutils literal"><span class="pre">Reporter</span></tt>/<tt class="docutils literal"><span class="pre">Article</span></tt>
+example above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls.defaults</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s">r&#39;^articles/(\d{4})/$&#39;</span><span class="p">,</span> <span class="s">&#39;mysite.views.year_archive&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^articles/(\d{4})/(\d{2})/$&#39;</span><span class="p">,</span> <span class="s">&#39;mysite.views.month_archive&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^articles/(\d{4})/(\d{2})/(\d+)/$&#39;</span><span class="p">,</span> <span class="s">&#39;mysite.views.article_detail&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The code above maps URLs, as simple regular expressions, to the location of
+Python callback functions (&quot;views&quot;). The regular expressions use parenthesis to
+&quot;capture&quot; values from the URLs. When a user requests a page, Django runs
+through each pattern, in order, and stops at the first one that matches the
+requested URL. (If none of them matches, Django calls a special-case 404 view.)
+This is blazingly fast, because the regular expressions are compiled at load
+time.</p>
+<p>Once one of the regexes matches, Django imports and calls the given view, which
+is a simple Python function. Each view gets passed a request object --
+which contains request metadata -- and the values captured in the regex.</p>
+<p>For example, if a user requested the URL &quot;/articles/2005/05/39323/&quot;, Django
+would call the function <tt class="docutils literal"><span class="pre">mysite.views.article_detail(request,</span>
+<span class="pre">'2005',</span> <span class="pre">'05',</span> <span class="pre">'39323')</span></tt>.</p>
+</div>
+<div class="section" id="s-write-your-views">
+<span id="write-your-views"></span><h2>Write your views<a class="headerlink" href="#write-your-views" title="Permalink to this headline">¶</a></h2>
+<p>Each view is responsible for doing one of two things: Returning an
+<a title="django.http.HttpResponse" class="reference external" href="../ref/request-response.html#django.http.HttpResponse"><tt class="xref docutils literal"><span class="pre">HttpResponse</span></tt></a> object containing the content for the
+requested page, or raising an exception such as <tt class="xref docutils literal"><span class="pre">Http404</span></tt>.
+The rest is up to you.</p>
+<p>Generally, a view retrieves data according to the parameters, loads a template
+and renders the template with the retrieved data. Here's an example view for
+<tt class="docutils literal"><span class="pre">year_archive</span></tt> from above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">year_archive</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+    <span class="n">a_list</span> <span class="o">=</span> <span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pub_date__year</span><span class="o">=</span><span class="n">year</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;news/year_archive.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;year&#39;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span> <span class="s">&#39;article_list&#39;</span><span class="p">:</span> <span class="n">a_list</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>This example uses Django's <a class="reference external" href="../topics/templates.html#topics-templates"><em>template system</em></a>, which has
+several powerful features but strives to stay simple enough for non-programmers
+to use.</p>
+</div>
+<div class="section" id="s-design-your-templates">
+<span id="design-your-templates"></span><h2>Design your templates<a class="headerlink" href="#design-your-templates" title="Permalink to this headline">¶</a></h2>
+<p>The code above loads the <tt class="docutils literal"><span class="pre">news/year_archive.html</span></tt> template.</p>
+<p>Django has a template search path, which allows you to minimize redundancy among
+templates. In your Django settings, you specify a list of directories to check
+for templates. If a template doesn't exist in the first directory, it checks the
+second, and so on.</p>
+<p>Let's say the <tt class="docutils literal"><span class="pre">news/article_detail.html</span></tt> template was found. Here's what that
+might look like:</p>
+<div class="highlight-html+django"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;base.html&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Articles for <span class="cp">{{</span> <span class="nv">year</span> <span class="cp">}}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+<span class="nt">&lt;h1&gt;</span>Articles for <span class="cp">{{</span> <span class="nv">year</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">article</span> <span class="k">in</span> <span class="nv">article_list</span> <span class="cp">%}</span>
+    <span class="nt">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">article.headline</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>By <span class="cp">{{</span> <span class="nv">article.reporter.full_name</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Published <span class="cp">{{</span> <span class="nv">article.pub_date</span><span class="o">|</span><span class="nf">date</span><span class="s2">:&quot;F j, Y&quot;</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+<p>Variables are surrounded by double-curly braces. <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">article.headline</span> <span class="pre">}}</span></tt>
+means &quot;Output the value of the article's headline attribute.&quot; But dots aren't
+used only for attribute lookup: They also can do dictionary-key lookup, index
+lookup and function calls.</p>
+<p>Note <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">article.pub_date|date:&quot;F</span> <span class="pre">j,</span> <span class="pre">Y&quot;</span> <span class="pre">}}</span></tt> uses a Unix-style &quot;pipe&quot; (the &quot;|&quot;
+character). This is called a template filter, and it's a way to filter the value
+of a variable. In this case, the date filter formats a Python datetime object in
+the given format (as found in PHP's date function; yes, there is one good idea
+in PHP).</p>
+<p>You can chain together as many filters as you'd like. You can write custom
+filters. You can write custom template tags, which run custom Python code behind
+the scenes.</p>
+<p>Finally, Django uses the concept of &quot;template inheritance&quot;: That's what the
+<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">&quot;base.html&quot;</span> <span class="pre">%}</span></tt> does. It means &quot;First load the template called
+'base', which has defined a bunch of blocks, and fill the blocks with the
+following blocks.&quot; In short, that lets you dramatically cut down on redundancy
+in templates: each template has to define only what's unique to that template.</p>
+<p>Here's what the &quot;base.html&quot; template might look like:</p>
+<div class="highlight-html+django"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;sitelogo.gif&quot;</span> <span class="na">alt=</span><span class="s">&quot;Logo&quot;</span> <span class="nt">/&gt;</span>
+    <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Simplistically, it defines the look-and-feel of the site (with the site's logo),
+and provides &quot;holes&quot; for child templates to fill. This makes a site redesign as
+easy as changing a single file -- the base template.</p>
+<p>It also lets you create multiple versions of a site, with different base
+templates, while reusing child templates. Django's creators have used this
+technique to create strikingly different cell-phone editions of sites -- simply
+by creating a new base template.</p>
+<p>Note that you don't have to use Django's template system if you prefer another
+system. While Django's template system is particularly well-integrated with
+Django's model layer, nothing forces you to use it. For that matter, you don't
+have to use Django's database API, either. You can use another database
+abstraction layer, you can read XML files, you can read files off disk, or
+anything you want. Each piece of Django -- models, views, templates -- is
+decoupled from the next.</p>
+</div>
+<div class="section" id="s-this-is-just-the-surface">
+<span id="this-is-just-the-surface"></span><h2>This is just the surface<a class="headerlink" href="#this-is-just-the-surface" title="Permalink to this headline">¶</a></h2>
+<p>This has been only a quick overview of Django's functionality. Some more useful
+features:</p>
+<ul class="simple">
+<li>A <a class="reference external" href="../topics/cache.html#topics-cache"><em>caching framework</em></a> that integrates with memcached
+or other backends.</li>
+<li>A <a class="reference external" href="../ref/contrib/syndication.html#ref-contrib-syndication"><em>syndication framework</em></a> that makes
+creating RSS and Atom feeds as easy as writing a small Python class.</li>
+<li>More sexy automatically-generated admin features -- this overview barely
+scratched the surface.</li>
+</ul>
+<p>The next obvious steps are for you to <a class="reference external" href="http://www.djangoproject.com/download/">download Django</a>, read <a class="reference external" href="tutorial01.html#intro-tutorial01"><em>the
+tutorial</em></a> and join <a class="reference external" href="http://www.djangoproject.com/community/">the community</a>. Thanks for your
+interest!</p>
+</div>
+</div>
+
+
+          </div>         
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../contents.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Bir bakışta Django</a><ul>
+<li><a class="reference external" href="#modelinizi-tasarlayin">Modelinizi tasarlayın</a></li>
+<li><a class="reference external" href="#kurun">Kurun</a></li>
+<li><a class="reference external" href="#ozgur-api-nin-tadini-cikartin">Özgür API&#8217;nin tadını çıkartın</a></li>
+<li><a class="reference external" href="#dinamik-bir-yonetim-arayuzu-sadece-bir-temel-degil-tum-ev">Dinamik bir yönetim arayüzü: sadece bir temel değil &#8211; tüm ev</a></li>
+<li><a class="reference external" href="#design-your-urls">Design your URLs</a></li>
+<li><a class="reference external" href="#write-your-views">Write your views</a></li>
+<li><a class="reference external" href="#design-your-templates">Design your templates</a></li>
+<li><a class="reference external" href="#this-is-just-the-surface">This is just the surface</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>Browse</h3>
+  <ul>
+    
+      <li>Prev: <a href="index.html">Başlarken</a></li>
+    
+    
+      <li>Next: <a href="install.html">Quick install guide</a></li>
+    
+  </ul>
+  <h3>You are here:</h3>
+  <ul>
+      <li>
+        <a href="../index.html">Django v1.0 documentation</a>
+        
+          <ul><li><a href="index.html">Başlarken</a>
+        
+        <ul><li>Bir bakışta Django</li></ul>
+        </li></ul>
+      </li>
+  </ul>  
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/intro/overview.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+              <h3>Last update:</h3>
+              <p class="topless">Sep 30, 2010</p>
+          </div> 
+        
+      
+    </div>
+    
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="index.html" title="Başlarken">previous</a> 
+     |
+    <a href="index.html" title="Başlarken" accesskey="U">up</a>
+   |
+    <a href="install.html" title="Quick install guide">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

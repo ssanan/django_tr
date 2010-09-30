@@ -1,0 +1,187 @@
+.. _index:
+
+======================
+Django Belgelendirmesi
+======================
+
+.. rubric:: Django hakkında bilmeniz gereken her şey (sonra daha fazlası).
+
+Yardım edinme
+==============
+
+Başınız dertteyse yardım etmek isteriz.
+
+* :ref:`S.S.S. <faq-index>`'ı deneyin -- aradığınız pek çok genel sorunun cevabı burada olabilir.
+
+* Daha özgün bir sorunun cevabını arıyorsanız :ref:`genindex`, :ref:`modindex` ya da
+  :ref:`ayrıntılı içerik tablosunu <contents>` deneyin.
+
+* `django-kullanıcıları e-posta listesinde`_ bilgi arayın, ya da
+  `yeni bir soru sorun`_.
+
+*  `#django IRC kanalında`_ bir soru sorun ya da `IRC kayıtlarından`_ daha önce 
+   sorulmuş mu arayın.
+
+* Django ile ilgili bulduğunuz bugları `iş takip sistemine`_ gönderin.
+
+.. _django-kullanıcıları e-posta listesinde: http://groups.google.com/group/django-users/
+.. _yeni bir soru sorun: http://groups.google.com/group/django-users/
+.. _#django IRC kanalında: irc://irc.freenode.net/django
+.. _IRC kayıtlarından: http://oebfare.com/logger/django/
+.. _iş takip sistemine: http://code.djangoproject.com/
+
+İlk adımlar
+=============
+
+:ref:`Genel bakış <intro-overview>`
+    Django'da veritabanı-idareli uygulama yazmanın neye benzediğini görün.
+
+:ref:`Kurulum <intro-install>`
+    Django'yu bilgisayarınıza kurun.
+
+Eğitsel: İlk Django uygulamanızı yazmak
+===============================================
+
+:ref:`1. Kısım <intro-tutorial01>`
+    Bir projeyi başlatın, modeller yaratın ve database API'si ile oynayın.
+
+:ref:`2. Kısım <intro-tutorial02>`
+    Otomatik-üretilen yönetim panelini keşfedin.
+
+:ref:`3. Kısım <intro-tutorial03>`
+    Umumi view'lar yazın.
+
+:ref:`4. Kısım <intro-tutorial04>`
+    Django'nun formları nasıl işlediğini görün.
+
+Djangoyu kullanmak
+====================
+
+:ref:`Modeller <topics-db-index>`
+    Veriniz için tek ve eksiksiz bir kaynak verisi dizayn edin.
+
+:ref:`Web isteklerini idare etme <topics-http-index>`
+    Web isteklerini idare edin, view'lar ile eşleyin ve sayfalar döndürün.
+
+:ref:`Formlar <topics-forms-index>`
+    HTML formlarını yaratın ve idare edin.
+
+:ref:`Şablonlar <topics-templates>`
+    Sitenizin görsel dizaynını inşa edin.
+
+Ve daha fazlası:
+-----------------
+
+    * :ref:`Kimlik denetleme <topics-auth>`
+    * :ref:`Önbellekleme <topics-cache>`
+    * :ref:`E-posta <topics-email>`
+    * :ref:`Dosya-erişim API'leri <topics-files>`
+    * :ref:`Yerelleştirme <topics-i18n>`
+    * :ref:`Sayfalandırma <topics-pagination>`
+    * :ref:`Serilizasyon <topics-serialization>`
+    * :ref:`Oturumlar <topics-http-sessions>`
+    * :ref:`Ayarlar/yapılandırma <topics-settings>`
+    * :ref:`Sinyaller <topics-signals>`
+    * :ref:`Testing <topics-testing>`
+
+Eklenti ("contrib") uygulamalar
+=================================
+
+:ref:`Django'nun otomatik yönetim paneli <ref-contrib-admin>`
+    Sitenizin verisine az bir çabayla temiz bir Web arayüzü edinin.
+
+:ref:`Form araçları <ref-contrib-formtools-index>`
+    Karmaşık form iş akışlarını kolayca irade edin.
+
+:ref:`Beslemeleri yayınlama <ref-contrib-syndication>`
+    Verileriniz için RSS ve Atom beslemeleri üretin.
+
+:ref:`"Yerel lezzetler" <ref-contrib-localflavor>`
+    Sitenize yaşadığınız yerle ilgili dokunuşlar verin.
+
+Ve daha fazlası:
+-----------------
+
+    * :ref:`Yorumlar <ref-contrib-comments-index>`
+    * :ref:`Content type'lar <ref-contrib-contenttypes>`
+    * :ref:`Cross Site Request Forgery koruması <ref-contrib-csrf>`
+    * :ref:`Veri görüntüleme <ref-contrib-databrowse>`
+    * :ref:`Düz sayfalar <ref-contrib-flatpages>`
+    * :ref:`İnsancıllaştırma <ref-contrib-humanize>`
+    * :ref:`Yönlendirmeler <ref-contrib-redirects>`
+    * :ref:`Site haritaları <ref-contrib-sitemaps>`
+    * :ref:`Siteler <ref-contrib-sites>`
+    * :ref:`Web tasarım yardımcıları <ref-contrib-webdesign>`
+    * :ref:`Markup <ref-contrib-markup>`
+
+Spesifik problemleri çözme
+===========================
+
+:ref:`Yayınlama <howto-deployment-index>`
+    Django projenizi Dünya'ya sunun.
+
+:ref:`Başka bir veritabanından içeri aktarma <howto-legacy-databases>`
+    Django'yu halihazırda var olan veritabanlarıyla ya da diğer web geliştirme 
+    araçlarıyla kullanın.
+
+:ref:`Özel şablon etiketleri ekleme <howto-custom-template-tags>`
+    Django'nun şablon diline kendi genişletmelerinizi ekleyin.
+
+:ref:`CSV <howto-outputting-csv>` ve :ref:`PDF <howto-outputting-pdf>` üretme
+    Django ile HTML olmayan içerik üretin.
+
+Ve daha fazlası:
+------------------
+
+    * :ref:`Apache'de kimlik denetleme <howto-apache-auth>`
+    * :ref:`Özel bir dosya depolama sistemi yazmak<howto-custom-file-storage>`
+    * :ref:`Özel django-admin komutları yazmak<howto-custom-management-commands>`
+    * :ref:`Özel model field'ları yazmak<howto-custom-model-fields>`
+    * :ref:`E-posta ile kod hatalarını takip etmek <howto-error-reporting>`
+    * :ref:`Modelleriniz için başlangıc verileri sağlamak<howto-initial-data>`
+    * :ref:`Django'yu Jython'da çalıştırmak<howto-jython>`
+    * :ref:`Statik dosyaları sunmak <howto-static-files>`
+
+Referans
+===========
+
+:ref:`Ayarlar <ref-settings>`
+    Django'nun tüm ayarlarını ve ne iş yaptıklarını görün.
+
+:ref:`İstek ve yanıt nesneleri <ref-request-response>`
+    Django'nun HTTP istekleri ve yanıtlarını temsil ettiği sınıfları anlayın.
+
+:ref:`Model API referansı <ref-models-index>`
+    Django'nun model sisteminin ürpertici detaylarına girin.
+
+:ref:`Form API referansı <ref-forms-index>`
+    Formların, field'ların ve widget'ların detaylarını öğrenin.
+
+Ve daha fazlası:
+-----------------
+
+    * :ref:`Desteklenen veritabanları hakkında notlar<ref-databases>`
+    * :ref:`django-admin.py ve manage.py<ref-django-admin>`
+    * :ref:`Dosya idare etme referansı<ref-files-index>`
+    * :ref:`Genel viewlar<ref-generic-views>`
+    * :ref:`Dahili middleware referansı<ref-middleware>`
+    * :ref:`Şablon referansı<ref-templates-index>`
+    * :ref:`Django'da unicode veriler<ref-unicode>`
+
+Ve tüm geriye kalan
+====================
+
+:ref:`İç organlar <internals-index>`
+    Django'nun motor kapağının altında nasıl çalıştığını ve projeye 
+    nasıl katkıda bulunabileceğinizi öğrenin.
+
+:ref:`Sürüm notları <releases-index>`
+    Her sürümdeki tüm yenilikleri ve değişiklikleri görün.
+
+:ref:`Uyumsuzluk zaman çizelgesi <internals-deprecation>`
+    Django'nun gelecekteki sürümleri için uyumsuz olarak işaretlenen API'leri
+    görün.
+
+:ref:`Çeşitli konular <misc-index>`
+    Yerleştireceğimiz uygun bir yer bulamadığımız şeyler. Mutfağınızdaki makas,
+    pil, selo bantları koyduğunuz çekmece gibi.
