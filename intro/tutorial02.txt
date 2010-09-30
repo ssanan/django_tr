@@ -1,8 +1,8 @@
 .. _intro-tutorial02:
 
-=====================================
-Writing your first Django app, part 2
-=====================================
+=======================================
+İlk Django uygulamanızı yazın, bölüm 2
+=======================================
 
 This tutorial begins where :ref:`Tutorial 1 <intro-tutorial01>` left off. We're
 continuing the Web-poll application and will focus on Django's
