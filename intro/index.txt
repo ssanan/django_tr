@@ -21,12 +21,12 @@ Django'da yeni misiniz? Veya web projeleri geliştirmede? Güzel,doğru yere gel
     Python_ 'da yeniyseniz, nasıl bir dil olduğu hakkında araştırma yaparak başlayabilirsiniz. 
     Django, 100% Python'dur. Python'da ne kadar bilginiz varsa Django'ya hükmetmeniz o kadar hızlı olacaktır.
     
-    Programlamaya yeni başlıyorsanız,`list of Python resources for non-programmers`_ belgelerine göz atarak başlayabilirsiniz.
+    Programlamaya yeni başlıyorsanız, `programci olmayanlar için Python kaynakları`_ belgelerine göz atarak başlayabilirsiniz.
     
-    Diğer birkaç dilde bilginiz varsa Python'u öğrenmeniz hızlı bir şekilde olabilir. `Dive Into Python`_ (also available in a `dead-tree version`_) kitabına göz atmanızı tavisiye ederiz. Bu size göre değilse `Python hakkındaki kitaplara`_ bakabilirsiniz.
+    Diğer birkaç dilde bilginiz varsa Python'u öğrenmeniz hızlı bir şekilde olabilir. `Dive Into Python`_ (aynı zamanda `kitap versiyonunu'da`_ alabilirsiniz) kitabına göz atmanızı tavisiye ederiz. Bu size göre değilse `Python hakkındaki kitaplara`_ bakabilirsiniz.
     
     .. _python: http://python.org/
-    .. _list of Python resources for non-programmers: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
+    .. _programci olmayanlar için Python kaynakları: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
     .. _Dive Into Python: http://diveintopython.org/
-    .. _dead-tree version: http://www.amazon.com/exec/obidos/ASIN/1590593561/ref=nosim/jacobian20
+    .. _kitap versiyonunu'da: http://www.amazon.com/exec/obidos/ASIN/1590593561/ref=nosim/jacobian20
     .. _Python hakkındaki kitaplara: http://wiki.python.org/moin/PythonBooks
