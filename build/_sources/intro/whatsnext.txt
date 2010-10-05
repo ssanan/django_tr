@@ -1,8 +1,8 @@
 .. _intro-whatsnext:
 
-=================
-What to read next
-=================
+========================
+Sıradaki okuma ne olmalı
+========================
 
 So you've read all the :ref:`introductory material <intro-index>` and have
 decided you'd like to keep using Django. We've only just scratched the surface

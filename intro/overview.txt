@@ -21,7 +21,7 @@ Modelinizi tasarlayın
 Django'yu bir veritabanı olmadan da kullanabilmenize rağmen, Django, Python kodu yazarak 
 veritabanınızın yerleşimini tanımlayacağınız bir nesne-ilişkisel eşleyici ile birlikte gelir.
 
-The :ref:`veri-model söz dizimi<topics-db-models>` size modellerinizi tanımlamak için zengin yollar sunar.
+ :ref:`Veri-model söz dizimi <topics-db-models>` size modellerinizi tanımlamak için zengin yollar sunar.
 Şimdilik iki yıllık süre boyunca karşılaşılmış veritabanı-şema problemlerini çözüyor. İşte hızlı bir örnek::
 
     class Yazar(models.Model):

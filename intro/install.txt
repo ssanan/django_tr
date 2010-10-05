@@ -3,10 +3,7 @@
 Hızlı kurulum rehberi
 =====================
 
-Django'yu kullanmaya başlamadan önce, kurmamız gerekiyor. We have a
-:ref:`complete installation guide <topics-install>` that covers all the
-possibilities; this guide will guide you to a simple, minimal installation
-that'll work while you walk through the introduction.
+Django'yu kullanmaya başlamadan önce, kurmamız gerekiyor. :ref:`Tam kurulum rehberi de <topics-install>` tüm olasılıkları bulabilirsiniz; giriş bölümüne geçmeden önce temel bileşenleri yükleyip basit bir kurulum yapacağız.
 
 Python yükleyin
 ----------------
